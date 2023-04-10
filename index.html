@@ -3,56 +3,117 @@
 <head>
 	<title>Greeting Card</title>
 	<style>
-		.page {
-			width: 300px;
-			height: 200px;
-			background-color: #fff;
-			border: 1px solid #ccc;
-			padding: 20px;
-		}
-		.button {
-			background-color: #4CAF50;
-			border: none;
-			color: white;
-			padding: 10px 20px;
-			text-align: center;
-			text-decoration: none;
-			display: inline-block;
-			font-size: 16px;
-			margin: 10px;
-			cursor: pointer;
-		}
+        .letter {
+          display: inline-block;
+          font-size: 3em;
+          font-weight: bold;
+          animation: wobble 1s infinite;
+        }
+
+        .letter:hover {
+          animation-play-state: paused;
+        }
+
+        @keyframes wobble {
+          0% {
+            transform: rotate(-10deg);
+          }
+          50% {
+            transform: rotate(10deg);
+          }
+          100% {
+            transform: rotate(-10deg);
+          }
+        }
+        body {
+            background-color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 50px;
+            font-size: 30px;
+            color: #ff69b4;
+        }
+
+        .page {
+            width: 700px;
+            height: 400px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            cursor: pointer;
+        }
+
+        #left-half {
+            float: left;
+            width: 50%;
+        }
+
+        #right-half {
+            float: right;
+            width: 50%;
+        }
 	</style>
 </head>
 <body>
 	<div class="page" id="page1">
-		<h1>Page 1</h1>
+		<center>
+            <h1><span class="letter">H</span>
+                <span class="letter">A</span>
+                <span class="letter">P</span>
+                <span class="letter">P</span>
+                <span class="letter">Y</span><br>
+                <span class="letter">B</span>
+                <span class="letter">I</span>
+                <span class="letter">R</span>
+                <span class="letter">T</span>
+                <span class="letter">H</span>
+                <span class="letter">D</span>
+                <span class="letter">A</span>
+                <span class="letter">Y</span><br>
+                <span class="letter">M</span>
+                <span class="letter">O</span>
+                <span class="letter">M</span>
+            </h1>
+        </center>
 		<p>This is the content of page 1.</p>
-		<a href="#page2" class="button">Next Page</a>
 	</div>
 	<div class="page" id="page2" style="display:none">
 		<h1>Page 2</h1>
 		<p>This is the content of page 2.</p>
-		<a href="#page1" class="button">Previous Page</a>
+	</div>
+	<div class="page" id="page3" style="display:none">
+		<h1>Page 3</h1>
+		<p>This is the content of page 2.</p>
+	</div>
+	<div class="page" id="page4" style="display:none">
+		<h1>Page 4</h1>
+		<p>This is the content of page 2.</p>
 	</div>
 	<script>
-		var links = document.querySelectorAll('.button');
 		var pages = document.querySelectorAll('.page');
-		for(var i=0; i<links.length; i++){
-			links[i].addEventListener('click',function(e){
-				e.preventDefault();
-				var nextPage = this.getAttribute('href');
-				pages.forEach(function(page) {
-					if (page.id === nextPage.substring(1)) {
-						page.style.display = 'block';
-					} else {
-						page.style.display = 'none';
-					}
-				});
+		var currentPageIndex = 0;
+		pages[currentPageIndex].style.display = 'block';
+		
+		document.body.addEventListener('click', function(event) {
+			var halfWidth = window.innerWidth / 2;
+			if (event.clientX < halfWidth) {
+				// Left half of the screen is clicked
+				currentPageIndex = Math.max(currentPageIndex - 1, 0);
+			} else {
+				// Right half of the screen is clicked
+				currentPageIndex = Math.min(currentPageIndex + 1, pages.length - 1);
+			}
+			pages.forEach(function(page, index) {
+				if (index === currentPageIndex) {
+					page.style.display = 'block';
+				} else {
+					page.style.display = 'none';
+				}
 			});
-		}
+		});
 	</script>
 </body>
 </html>
-
-
