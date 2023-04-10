@@ -1,136 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Happy Birthday Mom</title>
-  <style>
-  .letter {
-      display: inline-block;
-      font-size: 3em;
-      font-weight: bold;
-      animation: wobble 1s infinite;
-    }
-
-    .letter:hover {
-      animation-play-state: paused;
-    }
-
-    @keyframes wobble {
-      0% {
-        transform: rotate(-10deg);
-      }
-      50% {
-        transform: rotate(10deg);
-      }
-      100% {
-        transform: rotate(-10deg);
-      }
-    }
-  .balloon {
-      position: absolute;
-      top: 100px;
-      left: -50px;
-      animation: fly 10s linear infinite;
-      transform-origin: bottom center;
-    }
-
-    .balloon img {
-      display: block;
-      width: 200px;
-      height: 300px;
-    }
-
-    @keyframes fly {
-      0% {
-        transform: rotate(-20deg) translate(0, 0);
-      }
-      100% {
-        transform: rotate(20deg) translate(1200px, -800px);
-      }
-    }
-  
-  body {
-  background-color: #fff;
-  font-family: Arial, sans-serif;
-  text-align: center;
-  }
-
-  h1 {
-  margin-top: 50px;
-  font-size: 30px;
-  color: #ff69b4;
-	}
-
-  .image-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 30px;
-	}
-
-  img {
-  margin: 10px;
-  border-radius: 50%;
-  max-width: 300px;
-  max-height: 300px;
-  }
-
-  audio {
-  margin-top: 50px;
-  }
-
-  audio:focus {
-  outline: none;
-  }
-
-  audio::-webkit-media-controls-panel {
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 10px;
-  box-shadow: 0 0 10px #ff69b4;
-	}
-  </style>
-
+	<title>Greeting Card</title>
+	<style>
+		.page {
+			width: 300px;
+			height: 200px;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			padding: 20px;
+		}
+		.button {
+			background-color: #4CAF50;
+			border: none;
+			color: white;
+			padding: 10px 20px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 10px;
+			cursor: pointer;
+		}
+	</style>
 </head>
 <body>
-  <center>
-  <h1><span class="letter">H</span>
-    <span class="letter">A</span>
-    <span class="letter">P</span>
-    <span class="letter">P</span>
-    <span class="letter">Y</span>
-    <span class="letter"><br></span>
-    <span class="letter">B</span>
-    <span class="letter">I</span>
-    <span class="letter">R</span>
-    <span class="letter">T</span>
-    <span class="letter">H</span>
-    <span class="letter">D</span>
-    <span class="letter">A</span>
-    <span class="letter">Y</span>
-    <span class="letter"><br></span>
-    <span class="letter">M</span>
-    <span class="letter">O</span>
-    <span class="letter">M</span></h1>
-  <div class="image-container">
-    <img src="image1.jpg" alt="Image 1">
-    <img src="image2.jpg" alt="Image 2">
-    <img src="image3.jpg" alt="Image 3">
-  </div>
-  <div class="balloon">
-    <img src="https://w7.pngwing.com/pngs/549/328/png-transparent-party-balloon-birthday-colorful-balloons-ribbon-color-splash-heart-thumbnail.png" alt="Balloon" style="background-color: transparent;">
-  </div>
-  <audio controls>
-    <source src="music.mp3" type="audio/mpeg">
-  </audio>
-  <script>
-  const images = document.querySelectorAll('img');
-
-  images.forEach(img => {
-  img.addEventListener('click', () => {
-    img.classList.toggle('selected');
-  });
-  });
-  </script>
-  </center>
+	<div class="page">
+		<h1>Page 1</h1>
+		<p>This is the content of page 1.</p>
+		<a href="#page2" class="button">Next Page</a>
+	</div>
+	<div class="page" id="page2" style="display:none">
+		<h1>Page 2</h1>
+		<p>This is the content of page 2.</p>
+		<a href="#page1" class="button">Previous Page</a>
+	</div>
+	<script>
+		var link = document.querySelectorAll('.button');
+		for(var i=0; i<link.length; i++){
+			link[i].addEventListener('click',function(e){
+				e.preventDefault();
+				var nextPage = this.getAttribute('href');
+				document.querySelector('.page').style.display = 'none';
+				document.querySelector(nextPage).style.display = 'block';
+			});
+		}
+	</script>
 </body>
 </html>
+
