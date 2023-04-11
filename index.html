@@ -66,30 +66,49 @@
             float: right;
             width: 50%;
         }
+        .container {
+        position : absolute;
+        width: window.screen.width;
+        height: 100vh;
+        overflow: hidden;
+        animation: marquee 2s infinite;
+        top: 0;
+        left: 0;
+        vertical-align: middle;
+        horizontal-align: left;
+        z-index: 2;
+        }
+        
+        @keyframes marquee{
+         0%  {transform: translate(20px,100px);
+         }
+         50%  {transform: translate(-20px,-100px);
+         }
+        }
 	</style>
 </head>
 <body>
 	<div class="page" id="page1">
-	    
-            <h1 style="font-family: 'Comic Sans MS;">
-       <span class="letter"><img src="https://www.transparentpng.com/thumb/confetti/confetti-crop-png-2.png" width=window.screen.width alt="confetti crop png @transparentpng.com" style="position: absolute; z-index: 1;"></span>
-       <span class="letter">H</span>
-       <span class="letter">A</span>
-       <span class="letter">P</span>
-       <span class="letter">P</span>
-       <span class="letter">Y</span><br>
-       <span class="letter">B</span>
-       <span class="letter">I</span>
-       <span class="letter">R</span>
-       <span class="letter">T</span>
-       <span class="letter">H</span>
-       <span class="letter">D</span>
-       <span class="letter">A</span>
-       <span class="letter">Y</span><br>
-       <span class="letter">M</span>
-       <span class="letter">O</span>
-       <span class="letter">M</span>
-       </h1>
+	 <img src="https://www.transparentpng.com/thumb/confetti/confetti-crop-png-2.png" width=100% alt="confetti crop png @transparentpng.com" class="container">  
+      	 <h1 style="font-family: 'Comic Sans MS;">
+         <span class="letter"><img src="https://www.transparentpng.com/thumb/confetti/confetti-crop-png-2.png" width=window.screen.width alt="confetti crop png @transparentpng.com" style="position: absolute; z-index: 1;"></span>
+         <span class="letter">H</span>
+         <span class="letter">A</span>
+         <span class="letter">P</span>
+         <span class="letter">P</span>
+         <span class="letter">Y</span><br>
+         <span class="letter">B</span>
+         <span class="letter">I</span>
+         <span class="letter">R</span>
+         <span class="letter">T</span>
+         <span class="letter">H</span>
+         <span class="letter">D</span>
+         <span class="letter">A</span>
+         <span class="letter">Y</span><br>
+         <span class="letter">M</span>
+         <span class="letter">O</span>
+         <span class="letter">M</span>
+         </h1>
 		<img src="https://live.staticflickr.com/65535/52807206989_d9a98ae338_c.jpg" height=window.screen.height alt="IMG_20220805_131954"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
 	</div>
 	<div class="page" id="page2" style="display:none">
