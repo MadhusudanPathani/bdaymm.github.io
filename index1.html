@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Greeting Card</title>
+	<style>
+        .letter {
+          display: inline-block;
+          font-size: 3em;
+          font-weight: bold;
+          animation: wobble 1s infinite;
+        }
+
+        .letter:hover {
+          animation-play-state: paused;
+        }
+
+        @keyframes wobble {
+          0% {
+            transform: rotate(-10deg);
+          }
+          50% {
+            transform: rotate(10deg);
+          }
+          100% {
+            transform: rotate(-10deg);
+          }
+        }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #CCCCFF;
+			background-image: linear-gradient(to bottom, #CCCCFF 0%, #dbe2ef 100%);
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center;
+			position: relative;
+        }
+
+        h1 {
+            margin-top: 50px;
+            font-size: 30px;
+            color: #ff69b4;
+        }
+
+        .page {
+            width: window.screen.width;
+            height: 100vh;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            cursor: pointer;
+            background-color: #CCCCFF;
+	    background-image: linear-gradient(to bottom, #CCCCFF 0%, #dbe2ef 100%);
+	    background-repeat: no-repeat;
+            background-size: cover;
+	    background-position: center;
+	    position: relative;
+        }
+
+        #left-half {
+            float: left;
+            width: 50%;
+        }
+
+        #right-half {
+            float: right;
+            width: 50%;
+        }
+	</style>
+</head>
+<body>
+	<div class="page" id="page1" style="position: absolute; z-index: 1;">
+	    
+            <h1 style="font-family: 'Comic Sans MS;">
+       <span class="letter"><img src="https://www.transparentpng.com/thumb/confetti/confetti-crop-png-2.png" width=window.screen.width alt="confetti crop png @transparentpng.com" style="position: absolute; z-index: 1;"></span>
+       <span class="letter">H</span>
+       <span class="letter">A</span>
+       <span class="letter">P</span>
+       <span class="letter">P</span>
+       <span class="letter">Y</span><br>
+       <span class="letter">B</span>
+       <span class="letter">I</span>
+       <span class="letter">R</span>
+       <span class="letter">T</span>
+       <span class="letter">H</span>
+       <span class="letter">D</span>
+       <span class="letter">A</span>
+       <span class="letter">Y</span><br>
+       <span class="letter">M</span>
+       <span class="letter">O</span>
+       <span class="letter">M</span>
+       </h1>
+		<img src="https://live.staticflickr.com/65535/52807206989_d9a98ae338_c.jpg" height=window.screen.height alt="IMG_20220805_131954"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+	</div>
+	<div class="page" id="page2" style="display:none">
+		<h1>Page 2</h1>
+		<p></p>
+	</div>
+	<div class="page" id="page3" style="display:none">
+		<h1>Page 3</h1>
+		<p>.</p>
+	</div>
+	<div class="page" id="page4" style="display:none">
+		<h1>Page 4</h1>
+		<p></p>
+	</div>
+	<script>
+		var pages = document.querySelectorAll('.page');
+		var currentPageIndex = 0;
+		pages[currentPageIndex].style.display = 'block';
+		
+		document.body.addEventListener('click', function(event) {
+			var halfWidth = window.innerWidth / 2;
+			if (event.clientX < halfWidth) {
+				// Left half of the screen is clicked
+				currentPageIndex = Math.max(currentPageIndex - 1, 0);
+			} else {
+				// Right half of the screen is clicked
+				currentPageIndex = Math.min(currentPageIndex + 1, pages.length - 1);
+			}
+			pages.forEach(function(page, index) {
+				if (index === currentPageIndex) {
+					page.style.display = 'block';
+				} else {
+					page.style.display = 'none';
+				}
+			});
+		});
+	</script>
+</body>
+</html>
+	
